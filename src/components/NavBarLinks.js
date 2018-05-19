@@ -7,7 +7,7 @@ export default () => {
         <a className="what" href="#">What ?</a>
       </li>
       <li>
-        <a class="new" href="#">+ New Game</a> 
+        <a className="new" href="#">+ New Game</a> 
       </li>
     </ul>
   )
