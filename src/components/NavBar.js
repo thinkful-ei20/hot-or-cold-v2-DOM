@@ -1,7 +1,11 @@
 import React from 'react';
+import NavBarLinks from './NavBarLinks';
+import '../styles/navbar.css';
 
-export default function NavBar() {
+export default () => {
   return (
-    <h1>next Test</h1>
+    <nav>
+      <NavBarLinks />
+    </nav>
   )
 }
