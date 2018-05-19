@@ -8,7 +8,7 @@ const initState = {
 }
 
 // Put into utils folder
-const getFeedbackandSetState = (state, guess) => {
+const getFeedbackandSetState = (state, guess, feedback) => {
   const diff = Math.abs(guess - state.rightGuess);
   if(diff>=50){
     feedback = 'You\'re not even in the ball park...ice cold';
@@ -35,7 +35,7 @@ const validateGuessAndSetState = state => {
       feedback, guesses: [...state.guesses, guess]
     });
   }
-  getFeedbackandSetState(state, guess);
+  getFeedbackandSetState(state, guess, feedback);
 }
 const sOrNoS = guess => guess.length!==1 ? 'guesses': 'guess';
 const getFeedbackUpdate = state => {
