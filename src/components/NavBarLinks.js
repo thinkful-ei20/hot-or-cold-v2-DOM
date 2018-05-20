@@ -7,8 +7,8 @@ export function NavBarLinks(props){
   return (
   <ul className='clearfix'>
     <li>
-      <a className='what' href='#what' onClick={() => 
-      props.dispatch(toggleInfoModal(!props.modalView))}>What ?</a>
+      <a className='what' href='#what' aria-label="How to Play" onClick={() => 
+      props.dispatch(toggleInfoModal(!props.modalView))}>About This Game</a>
     </li>
     <li>
       <a className='new' href='#new' onClick={() => 
