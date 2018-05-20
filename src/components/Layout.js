@@ -2,9 +2,12 @@ import React from 'react';
 import Header from './Header';
 import Game from './Game';
 
-export default () => (
+export default function Layout(props){
+  return (
   <div>
     <Header />
-    <Game />
+    <main role='main'>
+      <Game />
+    </main>
   </div>
-);
+)};

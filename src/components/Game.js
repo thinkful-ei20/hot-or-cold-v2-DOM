@@ -1,15 +1,17 @@
 import React from 'react';
+import Feedback from './Feedback';
 import GameForm from './GameForm';
 import GameResults from './GameResults';
 import GameGuess from './GameGuess';
 
 import '../styles/game.css';
 
-export default () => (
+export default function Game(props){
+  return(
   <section className='game'>
-    <h2 id='feeback'>Make Your Guess!</h2>
+    <Feedback />
     <GameForm />
     <GameGuess />
     <GameResults />
   </section>
-);
+)};
