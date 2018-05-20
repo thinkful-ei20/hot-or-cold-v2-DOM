@@ -41,8 +41,9 @@ export default (state=initState, action) => {
     } else {
       feedback = 'You got it!'
     }
-    return Object.assign({}, state, {
-      feedback, guesses: [...state.guesses, guess]
+    console.log(state.rightGuess);
+    return Object.assign(...state, {
+      feedback, guesses: [...state.guesses, guess], rightGuess: state.rightGuess 
     });
   }
   if(action.type===TOGGLE_INFO_MODAL) {
