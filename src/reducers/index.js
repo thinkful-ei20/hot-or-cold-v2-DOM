@@ -11,7 +11,7 @@ const initState = {
 
 export default (state=initState, action) => {
   if(action.type===RESET_GAME){
-    return Object.assign({}, state, {
+    return Object.assign(...state, {
       modalView: false,
       guesses: [],
       feedback: 'Make Your Guess!',
@@ -21,15 +21,14 @@ export default (state=initState, action) => {
   }
   if(action.type===GET_GUESS){
     let guess = action.guess; let feedback;
-    if(isNaN(Number(guess))) {
-      feedback = 'Please enter a valid number.';
-      return Object.assign({}, state, {
-        feedback, 
-        guesses: [...state.guesses, guess]
-      });
-    }
     const diff = Math.abs(guess - state.rightGuess);
-    if(diff>=50){
+    if(state.guesses.includes(guess)) {
+      feedback = 'You\'ve already tried that number. Try a different number.';
+      return Object.assign(...state, {
+        feedback, 
+        guesses: state.guesses, rightGuess: state.rightGuess
+      });      
+    } else if(diff>=50){
       feedback = 'You\'re not even in the ball park...ice cold';
     } else if (diff>=30) {
       feedback = 'You\'re...cold.';
