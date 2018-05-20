@@ -1,7 +1,6 @@
-export const GET_INFO_MODAL = 'GET_INFO_MODAL';
-export const getInfoModal = () => ({type: GET_INFO_MODAL});
-export const HIDE_INFO_MODAL = 'HIDE_INFO_MODAL';
-export const hideInfoModal = () => ({type: HIDE_INFO_MODAL});
+export const TOGGLE_INFO_MODAL = 'TOGGLE_INFO_MODAL';
+export const toggleInfoModal = modalView => ({type: TOGGLE_INFO_MODAL, modalView});
+
 export const RESET_GAME = 'RESET_GAME';
 export const resetGame = rightGuess => ({type: RESET_GAME, rightGuess});
 

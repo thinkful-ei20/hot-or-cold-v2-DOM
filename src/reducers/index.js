@@ -1,34 +1,27 @@
-import {RESET_GAME,GET_STATUS_UPDATE,GET_GUESS} from '../actions/index';
+import {RESET_GAME, GET_GUESS, TOGGLE_INFO_MODAL} from '../actions/index';
+
 
 const initState = {
+  modalView: false,
   guesses: [],
   feedback: 'Make Your Guess!',
   feedbackUpdate: '',
   rightGuess: Math.floor(Math.random()*100) + 1
 }
 
-// Put into utils folder
-  
-const sOrNoS = guess => guess.length!==1 ? 'guesses': 'guess';
-const getFeedbackUpdate = state => {
-  const {guesses, feedback} = state;
-  let feedbackUpdate = `Ok here's the skinny: ${feedback} and you've made ${guesses.length} ${sOrNoS()}`;
-  return Object.assign({}, state, {feedbackUpdate});
-}
-
 export default (state=initState, action) => {
-  if(action.type==='RESET_GAME'){
+  if(action.type===RESET_GAME){
     return Object.assign({}, state, {
+      modalView: false,
       guesses: [],
       feedback: 'Make Your Guess!',
       feedbackUpdate: '',
       rightGuess: action.rightGuess
     });
   }
-  if(action.type==='GET_GUESS'){
-    let guess; let feedback;
-    guess = Number(action.guess)
-    if(isNaN(guess)) {
+  if(action.type===GET_GUESS){
+    let guess = action.guess; let feedback;
+    if(isNaN(Number(guess))) {
       feedback = 'Please enter a valid number.';
       return Object.assign({}, state, {
         feedback, 
@@ -39,7 +32,7 @@ export default (state=initState, action) => {
     if(diff>=50){
       feedback = 'You\'re not even in the ball park...ice cold';
     } else if (diff>=30) {
-      feedback = 'Okay...cold.';
+      feedback = 'You\'re...cold.';
     } else if (diff>=20) {
       feedback = 'You\'re feeling a little warmer than before';
     } else if (diff>=10) {
@@ -52,6 +45,9 @@ export default (state=initState, action) => {
     return Object.assign({}, state, {
       feedback, guesses: [...state.guesses, guess]
     });
+  }
+  if(action.type===TOGGLE_INFO_MODAL) {
+    return {...state, modalView: !state.modalView}
   }
   return state;
 }
