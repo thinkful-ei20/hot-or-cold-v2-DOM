@@ -7,9 +7,10 @@ import {getGuess} from '../actions/index';
 export class GameForm extends React.Component {
   onGuessing(event) {
     event.preventDefault();
-    this.props.dispatch(getGuess(this.input.value));
-    this.input.value = '';
-    this.input.focus();
+    this.props.dispatch(getGuess(this.userGuess));
+    this.userGuess = '';
+    document.getElementById('userGuess').value = '';
+    document.getElementById('userGuess').focus();
   }
   render() {
     return(
@@ -22,7 +23,7 @@ export class GameForm extends React.Component {
                 autoComplete='off' 
                 placeholder='Enter your Guess' 
                 required
-                ref={input => (this.input=input)} />
+                onChange={event => (this.userGuess = event.target.value)} />
         <input  type='submit' 
                 id='guessButton' 
                 className='button' 
