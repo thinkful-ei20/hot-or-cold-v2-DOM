@@ -1,11 +1,11 @@
-import {RESET_GAME, GET_GUESS, TOGGLE_INFO_MODAL} from '../actions/index';
+import {RESET_GAME, GET_GUESS, TOGGLE_INFO_MODAL, GET_STATUS_UPDATE} from '../actions/index';
 
 
 const initState = {
   modalView: false,
   guesses: [],
   feedback: 'Make Your Guess!',
-  feedbackUpdate: '',
+  statusUpdate: '',
   rightGuess: Math.floor(Math.random()*100) + 1
 }
 
@@ -15,7 +15,7 @@ export default (state=initState, action) => {
       modalView: false,
       guesses: [],
       feedback: 'Make Your Guess!',
-      feedbackUpdate: '',
+      statusUpdate: '',
       rightGuess: action.rightGuess
     });
   }
@@ -48,6 +48,17 @@ export default (state=initState, action) => {
   }
   if(action.type===TOGGLE_INFO_MODAL) {
     return {...state, modalView: !state.modalView}
+  }
+  if(action.type===GET_STATUS_UPDATE) {
+    const {guesses, feedback} = state;
+    let statusUpdate = `Ok here's the skinny: ${feedback}. 
+                        You've made ${guesses.length} guess${guesses.length>0 ? 'es':''}.`;
+    if(guesses.length>0){
+      statusUpdate += `${guesses.length===1 ? 
+                          'Your guess was':
+                          'Your guesses, in order of most-recent to least-recent were'}: ${guesses.reverse().join(', ')}`;
+    }
+    return Object.assign(...state, {statusUpdate})
   }
   return state;
 }
