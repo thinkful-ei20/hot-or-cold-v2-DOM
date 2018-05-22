@@ -16,7 +16,7 @@ export const Feedback = props => {
       id='feedback' 
       role='status' 
       aria-live='assertive' 
-      aria-atomic='true'>{props.feedback} {tryAgain}</h2>
+      aria-atomic='true'>{props.feedback}</h2>
 )}
 
 export default connect(mapStateToProps)(Feedback);

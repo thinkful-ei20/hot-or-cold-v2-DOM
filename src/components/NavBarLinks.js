@@ -2,6 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {resetGame, toggleInfoModal} from '../actions/index';
 
+const mapStateToProps = state => ({
+  modalView: state.modalView
+});
 
 export function NavBarLinks(props){
   return (
@@ -16,9 +19,5 @@ export function NavBarLinks(props){
     </li>
   </ul>
 )};
-
-const mapStateToProps = state => ({
-  modalView: state.modalView
-});
 
 export default connect(mapStateToProps)(NavBarLinks);
