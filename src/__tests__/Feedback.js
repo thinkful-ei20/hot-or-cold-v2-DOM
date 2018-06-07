@@ -5,6 +5,6 @@ import store from '../store';
 
 describe('<Feedback />', () => {
   it('Renders without crashing', () => {
-    shallow(<Feedback store={store}/>);
+    shallow(<Feedback store={store} />);
   });
 });

@@ -10,5 +10,5 @@ export default function Layout(props){
       <Game />
     </main>,
     <Footer />
-  ]
-};
+  ];
+}
